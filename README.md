@@ -3,69 +3,76 @@ A tool for monitoring all the threads currently running in the JVM, built in ful
 Below is the User Guide created as part of documentation for dissertation submission
 
 
-Concurrency Monitor User Guide
+## Java Monitor User Guide
 
 
-Welcome to the user guide for Concurrency Monitor. This is a tool that allow monitoring of concurrent Java code by observing all of the threads running in the Java Virtual Machine (JVM) and providing the ability to search for threads, as well as to view information represented in the graphical form - namely in pie charts and line graphs.
+Welcome to the user guide for Java Monitor. This is a tool that allows monitoring of concurrent Java code by observing all of the threads running in the Java Virtual Machine (JVM) and providing the ability to search for threads, as well as to view information represented in graphical form - namely in pie charts and line graphs.
 
-1. Getting Started
-Upon launching Concurrency Monitor via your IDE of choice you will be presented with a table listing all the threads running in the JVM. The following information is presented:
-	Thread Name - The name given to the thread (threads can have the same name)
+### Getting Started
+Java Monitor can be launched via your IDE of choice. You will be presented with a table listing all the threads running in the JVM. The following information is presented:
+
+	Thread Name - The name given to the thread (threads can have the same name).
 
 	Thread ID - The ID number given to the thread - this is unique.
 
-Thread Group - The thread group to which the thread belongs. The default groups are System, Innocuous and Main. Any user-created thread groups will also be added.
+	Thread Group - The thread group to which the thread belongs. The default groups are System, Innocuous and Main. Any user-created thread groups will also be added.
 
 	Thread State - The current state the thread is in: NEW, RUNNABLE, WAITING, TIMED WAITING, BLOCKED, TERMINATED.
-	Threads that are RUNNABLE, WAITING, TIMED WAITING or BLOCKED are considered to be active threads by Concurrency Monitor.
+	Threads that are RUNNABLE, WAITING, TIMED WAITING or BLOCKED are considered to be active threads by Java Monitor.
 	Threads that are NEW or TERMINATED are not considered active but are instead included in the total thread count.
 
-	Priority - The priority of the threads, 1 is lowest priority and 10 is highest.
+	Priority - The priority of the threads - 1 is lowest priority and 10 is highest.
 
-	Daemon - Whether or not the thread is a daemon thread or not - 
-	either True or False.
+	Daemon - Whether or not the thread is a daemon thread or not - either True or False.
 
 This list updates every one second, so that it quickly reflects any changes to threads, or any new threads created.
 	
 	
-2. Searching
-It is possible to search the thread table by any on the attributes listed in Section 1 - Name, ID, Thread Group, State, Priority, Daemon.
+### Searching 
+It is possible to search the thread table by any of the attributes listed in Section 1 - Name, ID, Thread Group, State, Priority, Daemon.
 
 To search by thread name, type into the box in the upper left-hand corner of the screen.
 
-To search by thread ID, click on the drop-down menu by clicking on "Name" and select "ID. You can then search by thread ID.
+To search by thread ID, click on the drop-down menu by clicking on "Name" and select "ID". You can then search by thread ID.
 
 To search by any of Thread Group, State, Priority, and Daemon, click on the appropriate drop-down and select the desired option.
 
-Searching is possible by any combination of filter. For example, you can search threads in the "main" thread group with a RUNNABLE state that are not daemons, and then use the thread name search box to search within that subset of threads. This is possible for any combination of: Name, ID, Thread Group, State, Priority, Daemon.
+Searching is possible by any combination of filters. For example, you can search threads in the "main" thread group with a RUNNABLE state that are not daemons, and then use the thread name search box to search within that subset of threads. This is possible for any combination of: Name, ID, Thread Group, State, Priority, Daemon.
 
 Click "Clear Filters" to reset the filters and search back to their default values. This will once again show all the threads in the JVM.
 
 
-3. Filtering and Deleting
-It is possible to hide several threads groups. This is separate from the filters in Section 2 and is not reset will "Clear Filters" is clicked.
-	By ticking "Hide System Threads", threads in the "system" group will be hidden from the thread table until this is unticked.
-	By ticking "Hide Innocuous Threads", threads in the "InnocuousThreadGroup" will be hidden from the thread table until this is unticked.
-	By ticking "Hide Terminated Threads", threads that have been terminated will be hidden from the thread table until this is unticked. Their thread group is shown as "TERMINATED", although technically this is not a thread group,	since the threads is terminated and therefore does not have a thread group.
+### Filtering and Deleting
+It is possible to hide several threads groups. This is separate from the filters in Section 2 and is not reset when "Clear Filters" is clicked.
+
+By ticking "Hide System Threads", threads in the "system" group will be hidden from the thread table until this is unticked.
+ 
+By ticking "Hide Innocuous Threads", threads in the "InnocuousThreadGroup" will be hidden from the thread table until this is unticked.
+ 
+By ticking "Hide Terminated Threads", threads that have been terminated will be hidden from the thread table until this is unticked. Their thread group is shown as "TERMINATED", although technically this is not a thread group,	since the thread is terminated and therefore does not have a thread group.
 
 Clicking "Delete Terminated" will permanently delete terminated threads, such that they cannot be added back into the thread table.
 
-4. Other options
+### Other options
 "Help" button will open the help menu.
-"Exit" will close Concurrency Monitor.
+
+"Exit" will close Java Monitor.
+
 "Active Count" indicates the number of threads currently active in the JVM.
+
 "Total Count" indicates the total number of threads that have been created - all the active threads, plus NEW and TERMINATED threads.
 
 
-5. Thread Visualisation
-Clicking "Thread Visualisation will allow you to accesss a variety of graphical representations of thread data.
-This functions in the same way as the thread table screen, in that it updates every one second, to reflect changes within the JVM.
+### Thread Visualisation
+Clicking "Thread Visualisation" will allow you to accesss a variety of graphical representations of thread data.
+
+This functions in the same way as the thread table screen, in that it updates every second, to reflect changes within the JVM.
 
 There are two pie charts:
 
-	"Active State Pie Chart" - This is the default view, which shows how many active threads are in each thread state. This does not include NEW and TERMINATED threads. The key to the right-hand side indicates what the colours stand 	or, as do the labels on the pie segments.
+	"Active State Pie Chart" - This is the default view, which shows how many active threads are in each thread state. This does not include NEW and TERMINATED threads. The key to the right-hand side indicates what the colours stand 	for, as do the labels on the pie segments.
 
-	"Total Thread State Pie Chart" bring up a pie chart which also shows how many threads are in each state. This include NEW and TERMINATED threads. The key to the right-hand side indicates what the colours stand for, as do the 	labels on the pie segments.
+	"Total Thread State Pie Chart" brings up a pie chart which also shows how many threads are in each state. This includes NEW and TERMINATED threads. The key to the right-hand side indicates what the colours stand for, as do the 	labels on the pie segments.
 
 There are three line graphs. Each line graph is plotted against the time of day along the x-axis.
 
@@ -73,4 +80,4 @@ There are three line graphs. Each line graph is plotted against the time of day 
 
 	"Daemon Threads Line Graph" plots two lines on a graph, one representing the active thread count, and another representing the daemon thread count. The key to the right-hand side indicates what the colours stand for.
 
-	"Active State Line Graph" plots five lines on a graph, one representing each active thread state -  RUNNABLE, NEW, WAITING, TIMED WAITING and BLOCKED. This is the same information shown by the "Active State Pie Chart", but in 	the form of a line graph. The key to the right-hand side indicates what the colours stand for.
+	"Active State Line Graph" plots four lines on a graph, one representing each active thread state - RUNNABLE, WAITING, TIMED WAITING and BLOCKED. This is the same information shown by the "Active State Pie Chart", but in the form of a line graph. The key to the right-hand side indicates what the colours stand for.
