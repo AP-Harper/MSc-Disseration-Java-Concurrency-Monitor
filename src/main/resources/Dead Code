@@ -1,0 +1,368 @@
+
+
+//        MyThread delayed = new MyThread("Third", "Three", "Low", "Active");
+//        model.addToList(delayed);
+
+
+
+
+
+
+//        TimerTask myTimerTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                for (MyThread t : model.getThreads()) {
+//                    t.setThreadState(Thread.State.BLOCKED);
+//                    tableView.refresh();
+//                }
+//                System.out.println("New");
+//
+//                model.getThreadName();
+//
+//            }
+//        };
+//
+//        Timer timer = new Timer(true);
+//        timer.scheduleAtFixedRate(myTimerTask, 1000, 3000);
+//
+//
+//
+//
+//        model.getThreads().addListener(new ListChangeListener<MyThread>() {
+//            @Override
+//            public void onChanged(Change<? extends MyThread> change) {
+////                tableView.refresh();
+//
+//            }
+//        });
+
+
+
+//
+//        threadList.addListener(new ListChangeListener<MyThread>() {
+//            @Override
+//            public void onChanged(Change<? extends MyThread> change) {
+//
+//
+//            }
+//        });
+
+
+//        listView.setItems(threadList);
+
+
+//        threadNameCol.setCellValueFactory(new PropertyValueFactory<MyThread, String>("getName"));
+//        tableView.setItems(threadList);
+
+
+
+
+
+
+
+//        ObservableList <Thread> threadCollection;
+//        threadCollection = FXCollections.observableArrayList();
+
+
+
+
+
+
+
+
+
+
+//        thread2.setName("HIHIHIHIHIHIHIHIHIH");
+
+//        for (Thread thread : threadCollection) {
+//            model.addToList(thread.getName(), thread.getThreadGroup.(), thread.getPriority(), thread.getState());
+//        }
+
+//        threadNameCol.setCellValueFactory(new PropertyValueFactory<Observable, String>("getName()"));
+//          threadGroup.setCellValueFactory(new PropertyValueFactory<Thread, ThreadGroup>("getThreadGroup"));
+//        threadPriority.setCellValueFactory(new PropertyValueFactory<Thread, Integer>("threadPriority"));
+//        threadState.setCellValueFactory(new PropertyValueFactory<Thread, Thread.State>("getState"));
+
+//
+//                int totalCount = model.getTotalThreadCount();
+//                int activeCount = model.getActiveThreadCount();
+//                labelTotalCount.setText(String.valueOf(totalCount));
+//                labelActiveCount.setText(String.valueOf(activeCount));
+
+//                for (ThreadGroup tg : model.getAllGroups()) {
+//                    int count = 0;
+//                    int group = 0;
+//                    String seriesName = tg.getName();
+//                    for (Thread t : model.getAllThreads()) {
+//                        if (null != t.getThreadGroup()) {
+//                            if (t.getThreadGroup().getName().equals(tg.getName())) {
+//                                count++;
+//
+//                            }
+//                        }
+//                        Date now = new Date();
+//
+////                        new LineChart<>(xAxisGroups, yAxisGroups).getData().add(new XYChart.Series<String,  Number>().getData().add(new XYChart.Data<>("sy", 1)));
+//
+//
+////                        LineChart<String, Number> lineGroupCount = new LineChart<>(xAxisGroups, yAxisGroups);
+////
+////
+////                        XYChart.Series<String, Number> seriesGroups = new XYChart.Series<>();
+////
+////
+////                        lineGroupCount.getData().add(seriesGroups);
+//
+//                        seriesBar.getData().add(new XYChart.Data<>(simpleDateFormat.format(now), model.getTotalThreadCount()));
+//
+//
+//
+//                    }
+//                    Date now = new Date();
+//
+//                    map.put(tg.getName(), count);
+//
+//
+//                }
+//                System.out.println("TOTAL COUNT SCREEN 2: " + model.getTotalThreadCount());
+
+
+
+
+
+        xAxisBar.setLabel("Time");
+        yAxisBar.setLabel("Threads");
+
+        XYChart.Series<String, Number> seriesBar = new XYChart.Series<>();
+
+
+        xAxisGroups.setLabel("Groups");
+        yAxisGroups.setLabel("Time");
+        XYChart.Series<String, Number> seriesGroups = new XYChart.Series<>();
+        XYChart.Series<String, Number> seriesGroupsA = new XYChart.Series<>();
+
+
+
+        seriesGroups.setName("Main Count");
+        seriesGroupsA.setName("Group A");
+        lineGroupCount.getData().add(seriesGroups);
+        lineGroupCount.getData().add(seriesGroupsA);
+
+
+
+
+        Date now2 = new Date();
+
+        Map<String, Integer> map = new HashMap<>();
+
+
+//                seriesBar.getData().add(new XYChart.Data<>(simpleDateFormat.format(now), model.getTotalThreadCount()));
+
+
+
+                // Thread count line graph
+//                Date now = new Date();
+
+//            seriesBar.getData().add(new XYChart.Data<>(simpleDateFormat.format(now), model.getActiveThreadCount()));
+//                seriesGroups.getData().add(new XYChart.Data<>(simpleDateFormat.format(now), map.get("main")));
+//                seriesGroupsA.getData().add(new XYChart.Data<>(simpleDateFormat.format(now), map.get("Group A")));
+
+                // Daemon line graph - populate and keep update
+
+
+   public void priorityPieChart() {
+        // Create Pie Chart for thread priority
+        int onePriority = 0;
+        int twoPriority = 0;
+        int threePriority = 0;
+        int fourPriority = 0;
+        int fivePriority = 0;
+        int sixPriority = 0;
+        int sevenPriority = 0;
+        int eightPriority = 0;
+        int ninePriority = 0;
+        int tenPriority = 0;
+
+        for (Thread t: model.getObservableThreadList()) {
+            if(t.getPriority() == 1) {
+                onePriority++;
+            }
+            if (t.getPriority() == 2) {
+                twoPriority++;
+            }
+            if (t.getPriority() == 3) {
+                threePriority++;
+            }
+            if (t.getPriority() == 4) {
+                fourPriority++;
+            }
+            if (t.getPriority() == 5) {
+                fivePriority++;
+            }
+            if (t.getPriority() == 6) {
+                sixPriority++;
+            }
+            if (t.getPriority() == 7) {
+                sevenPriority++;
+            }
+            if (t.getPriority() == 8) {
+                eightPriority++;
+            }
+            if (t.getPriority() == 9) {
+                ninePriority++;
+            }
+            if (t.getPriority() == 10) {
+                tenPriority++;
+            }
+        }
+
+        ObservableList<PieChart.Data> priorityPieChartData = FXCollections.observableArrayList(
+                new PieChart.Data("One", onePriority),
+                new PieChart.Data("Two", twoPriority),
+                new PieChart.Data("Three", threePriority),
+                new PieChart.Data("Four", fourPriority),
+                new PieChart.Data("Five", fivePriority),
+                new PieChart.Data("Six", sixPriority),
+                new PieChart.Data("Seven", sevenPriority),
+                new PieChart.Data("Eight", eightPriority),
+                new PieChart.Data("Nine", ninePriority),
+                new PieChart.Data("Ten", tenPriority));
+
+        piePriority.setData(priorityPieChartData);
+        piePriority.setTitle("Priority");
+        piePriority.setAnimated(true);
+        piePriority.setLegendSide(Side.RIGHT);
+    }
+______________________ MAIN DEAD CODE_____________________
+
+package com.andrew.concurrency;
+
+import javafx.application.Application;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+    @FXML
+    private Stage stage;
+    ThreadModel model = new ThreadModel();
+
+
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
+//        MainController mainController = new MainController();
+//        ThreadGraph threadGraph = new ThreadGraph();
+        model.getObservableThreadList();
+//        mainController.initModel(model);
+//        mainController.initMain(this);
+//        threadGraph.initModel(model);
+//        threadGraph.initMain(this);
+
+//        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+//            model.getObservableThreadList();
+//            System.out.println("MAIN COUNT: " + model.getTotalThreadCount());
+//
+//        }));
+//        timeline.setCycleCount(Animation.INDEFINITE);
+//        timeline.play();
+//
+//
+
+
+        this.stage = stage;
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/ThreadTable.fxml"));
+
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root, 1200, 800);
+        stage.setTitle("Concurrency Monitor");
+        stage.setScene(scene);
+        stage.show();
+
+//        showThreadOverview();
+//        showThreadSummary();
+
+
+    }
+
+
+
+//    public void initRootLayout() {
+//        try {
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/RootLayout.fxml"));
+//            rootLayout = fxmlLoader.load();
+//            Scene scene = new Scene(rootLayout);
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//
+//    public void showThreadOverview() {
+////        initRootLayout();
+//
+//        try {
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Fxml/ThreadTable.fxml"));
+//            Scene scene = fxmlLoader.load();
+//            stage.setScene(scene);
+//            stage.show();
+//
+
+
+
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+
+
+//    public void showThreadSummary() throws IOException {
+//        initRootLayout();
+//        try {
+//            FXMLLoader loader = new FXMLLoader();
+//            AnchorPane main = loader.load();
+//            rootLayout.setCenter(main);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+    public ThreadModel getModel() {
+        model.getObservableThreadList();
+        return this.model;
+    }
+
+
+
+
+
+
+
+
+    public static void main(String[] args) {
+        launch();
+    }
+
+}
+
+
+
+
+
+
+
+
+

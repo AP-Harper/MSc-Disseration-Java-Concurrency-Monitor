@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" style="-fx-background-color: #fdeff4;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andrew.concurrency.ThreadTableController">
+   <children>
+      <BorderPane fx:id="graphBorderPane" layoutX="230.0" layoutY="-76.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TableView fx:id="tableView" prefHeight="408.0" prefWidth="732.0" BorderPane.alignment="CENTER">
+                <placeholder>
+                    <Label text="No threads to display" />
+                </placeholder>
+              <columns>
+                <TableColumn fx:id="threadNameCol" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="threadID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="threadGroup" prefWidth="75.0" text="Group" />
+                  <TableColumn fx:id="threadState" prefWidth="75.0" text="State" />
+                  <TableColumn fx:id="threadPriority" prefWidth="75.0" text="Priority" />
+                  <TableColumn fx:id="threadDaemon" prefWidth="75.0" text="Daemon" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </center>
+         <left>
+            <VBox prefHeight="342.0" prefWidth="153.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="154.0" text="Menu" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font name="Georgia" size="25.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="30.0" />
+                     </padding>
+                  </Label>
+                  <Button fx:id="btnOpenGraphs" alignment="CENTER" mnemonicParsing="false" onAction="#openGraphs" prefHeight="29.0" prefWidth="155.0" text="Thread Visualisation" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Region prefHeight="408.0" prefWidth="153.0" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="btnHelp" alignment="CENTER" mnemonicParsing="false" onAction="#setBtnHelp" prefHeight="30.0" prefWidth="150.0" text="Help" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnExit" alignment="CENTER" mnemonicParsing="false" onAction="#setBtnExit" prefHeight="30.0" prefWidth="150.0" text="Exit" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+         <bottom>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="181.0">
+                           <children>
+                              <Region prefHeight="34.0" prefWidth="181.0" />
+                              <Label fx:id="timer" prefHeight="36.0" prefWidth="184.0" text="00:00:00">
+                                 <font>
+                                    <Font name="Arial Bold" size="31.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="100.0" prefWidth="861.0" HBox.hgrow="ALWAYS" />
+                  <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="176.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_RIGHT" text="Active Count:">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelActiveCount" alignment="BOTTOM_RIGHT">
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="BOTTOM_RIGHT" text="Total Count: ">
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelTotalCount" alignment="BOTTOM_RIGHT">
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <VBox prefHeight="115.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <ChoiceBox fx:id="searchFilter" prefHeight="26.0" prefWidth="75.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </ChoiceBox>
+                        <TextField fx:id="searchBox" prefHeight="26.0" prefWidth="150.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </TextField>
+                        <ChoiceBox fx:id="groupFilter" prefWidth="150.0">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="statusFilter" prefHeight="26.0" prefWidth="95.0">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="priorityFilter" prefHeight="26.0" prefWidth="95.0">
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </ChoiceBox>
+                        <ChoiceBox fx:id="daemonFilter" prefHeight="26.0" prefWidth="104.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="5.0" right="5.0" />
+                           </padding>
+                        </ChoiceBox>
+                        <Button fx:id="btnClear" mnemonicParsing="false" onAction="#setBtnClear" prefHeight="36.0" prefWidth="83.0" text="Clear Filters" textAlignment="CENTER" underline="true">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Region prefHeight="59.0" prefWidth="192.0" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="TOP_RIGHT" HBox.hgrow="ALWAYS">
+                           <children>
+                              <CheckBox fx:id="checkSystemThreads" alignment="TOP_LEFT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#setCheckSystemThreads" prefHeight="17.0" prefWidth="170.0" text="Hide System Threads">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </CheckBox>
+                              <CheckBox fx:id="checkInnocuousThreads" alignment="TOP_LEFT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#setCheckInnocuousThreads" prefHeight="27.0" prefWidth="170.0" text="Hide Innocuous Threads">
+                                 <padding>
+                                    <Insets left="5.0" top="10.0" />
+                                 </padding>
+                              </CheckBox>
+                              <CheckBox fx:id="checkTerminatedThreads" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#setCheckTerminatedThreads" prefHeight="27.0" prefWidth="170.0" text="Hide Terminated Threads">
+                                 <padding>
+                                    <Insets left="5.0" top="10.0" />
+                                 </padding>
+                              </CheckBox>
+                           </children>
+                        </VBox>
+                        <Button fx:id="btnDeleteTerminated" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#setBtnDeleteTerminated" prefHeight="29.0" prefWidth="114.0" text="Delete Terminated">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label alignment="TOP_CENTER" text="Concurrency Monitor" textAlignment="JUSTIFY" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font name="Arial" size="40.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>

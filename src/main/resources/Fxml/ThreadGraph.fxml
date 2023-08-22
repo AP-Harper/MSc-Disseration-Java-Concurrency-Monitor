@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #fdeff4;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andrew.concurrency.ThreadGraphController">
+   <children>
+      <BorderPane layoutX="244.0" layoutY="160.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <left>
+              <VBox prefHeight="490.0" prefWidth="153.0" BorderPane.alignment="CENTER">
+                  <children>
+                      <Label alignment="CENTER" prefHeight="30.0" prefWidth="154.0" text="Menu" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                          <font>
+                              <Font name="Georgia" size="25.0" />
+                          </font>
+                          <padding>
+                              <Insets bottom="30.0" />
+                          </padding>
+                      </Label>
+                      <Button fx:id="btnMain" alignment="CENTER" mnemonicParsing="false" onAction="#openThreadTable" prefHeight="29.0" prefWidth="155.0" text="Thread Table" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+                  <Region prefHeight="447.0" prefWidth="153.0" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="btnHelp" alignment="CENTER" mnemonicParsing="false" onAction="#setBtnHelp" prefHeight="29.0" prefWidth="155.0" text="Help" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="btnExit" alignment="CENTER" mnemonicParsing="false" onAction="#setBtnExit" prefHeight="29.0" prefWidth="155.0" text="Exit" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                     </VBox.margin>
+                  </Button>
+                  </children>
+              </VBox>
+          </left>
+         <center>
+            <TabPane fx:id="tabPane" prefHeight="86.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="tabPieChart" text="Active Thread State Pie Chart">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <PieChart fx:id="activeStatePie" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="tabTotalThreadState" text="Total Thread State Pie Chart">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <PieChart fx:id="totalStatePieChart" layoutX="174.0" layoutY="91.0" prefHeight="511.0" prefWidth="1037.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tabBarGraph" text="Total Threads Line Graph">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <LineChart fx:id="totalThreadCountLine" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+                              <xAxis>
+                                  <CategoryAxis side="BOTTOM" fx:id="xAxisTotalCount" />
+                              </xAxis>
+                              <yAxis>
+                                  <NumberAxis fx:id="yAxisTotalCount" side="LEFT" />
+                              </yAxis>
+                          </LineChart>
+                      </AnchorPane>
+                  </Tab>
+                  <Tab fx:id="tabDaemon" text="Daemon Threads Line Graph">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <LineChart fx:id="lineChartDaemon" layoutX="258.0" layoutY="178.0" prefHeight="511.0" prefWidth="1037.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" fx:id="xAxisDaemon" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis fx:id="yAxisDaemon" side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="tabGroupPie" text="Active Thread State Line Graph">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <LineChart fx:id="lineChartActiveState" layoutX="218.0" layoutY="171.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" fx:id="xAxisActiveState" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis fx:id="yAxisActiveState" side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+               <BorderPane.margin>
+                  <Insets bottom="50.0" left="5.0" right="5.0" top="10.0" />
+               </BorderPane.margin>
+            </TabPane>
+         </center>
+         <bottom>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="181.0">
+                           <children>
+                              <Region prefHeight="34.0" prefWidth="181.0" />
+                              <Label fx:id="timer" prefHeight="36.0" prefWidth="184.0" text="00:00:00">
+                                 <font>
+                                    <Font name="Arial Bold" size="31.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Region prefHeight="100.0" prefWidth="861.0" HBox.hgrow="ALWAYS" />
+                  <HBox alignment="BOTTOM_RIGHT" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="170.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="110.0">
+                                 <children>
+                                    <Label text="Active Count:">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelActiveCount">
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Total Count: ">
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelTotalCount">
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                       <font>
+                                          <Font name="Arial" size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </bottom>
+         <top>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Region prefHeight="100.0" prefWidth="372.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Region>
+                  <Label alignment="CENTER" text="Thread Visualisation" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font name="Arial" size="40.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="100.0" prefWidth="289.0" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnClearTerminated" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#clearTerminated" prefHeight="29.0" prefWidth="114.0" text="Delete Terminated" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="5.0" top="30.0" />
+                     </HBox.margin></Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
