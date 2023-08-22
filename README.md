@@ -1,4 +1,4 @@
-# MSc-Disseration---Java-Concurrency-Monitor
+# MSc-Disseration-Java-Concurrency-Monitor
 A tool for monitoring all the threads currently running in the JVM, built in fulfilment of MSc Software Development dissertation.
 Below is the User Guide created as part of documentation for dissertation submission
 
